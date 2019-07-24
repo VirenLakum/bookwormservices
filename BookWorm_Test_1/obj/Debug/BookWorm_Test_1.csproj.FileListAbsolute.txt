@@ -1,0 +1,5 @@
+C:\Users\admin\Desktop\BookWorm\BookWorm_Test_1\BookWorm_Test_1\bin\BookWorm_Test_1.dll
+C:\Users\admin\Desktop\BookWorm\BookWorm_Test_1\BookWorm_Test_1\bin\BookWorm_Test_1.pdb
+C:\Users\admin\Desktop\BookWorm\BookWorm_Test_1\BookWorm_Test_1\obj\Debug\BookWorm_Test_1.dll
+C:\Users\admin\Desktop\BookWorm\BookWorm_Test_1\BookWorm_Test_1\obj\Debug\BookWorm_Test_1.pdb
+C:\Users\admin\Desktop\BookWorm\BookWorm_Test_1\BookWorm_Test_1\obj\Debug\BookWorm_Test_1.csprojResolveAssemblyReference.cache
