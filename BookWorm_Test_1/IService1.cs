@@ -67,5 +67,12 @@ namespace BookWorm_Test_1
                     ResponseFormat = WebMessageFormat.Json, 
                     UriTemplate = "/addUser")]
         Boolean addUser(User p);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+                    RequestFormat = WebMessageFormat.Json,
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "/authUser")]
+        bool authUser(User p);
     }
 }

@@ -35,5 +35,29 @@ namespace BookWorm_Test_1.Table_Services
             }
             return result > 0 ? true : false;
         }
+
+        public static bool authUser(User user)
+        {
+            Object result = 0;
+
+            using (SqlConnection con = GetSqlConnection.getSqlConnection())
+            {
+                string str = "select count(*) from Users where email = @email and password = @password;";
+
+                SqlCommand cmd = new SqlCommand(str, con);
+
+                cmd.Parameters.AddWithValue("@password", user.password);
+                cmd.Parameters.AddWithValue("@email", user.email);
+
+                con.Open();
+
+                result = cmd.ExecuteScalar();
+            }
+
+            return Int32.Parse(result.ToString()) > 0 ? true : false;
+        }
     }
+
+   
+
 }

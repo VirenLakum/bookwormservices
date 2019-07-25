@@ -119,5 +119,11 @@ namespace BookWorm_Test_1
         {
             return UserTableServices.addUser(p);
         }
+
+
+        bool IProductService.authUser(User p)
+        {
+            return UserTableServices.authUser(p);
+        }
     }
 }
