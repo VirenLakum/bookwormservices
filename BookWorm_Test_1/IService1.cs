@@ -19,6 +19,12 @@ namespace BookWorm_Test_1
         [WebInvoke(Method = "POST", RequestFormat=WebMessageFormat.Json,ResponseFormat = WebMessageFormat.Json, UriTemplate = "/addProduct")]
         Boolean addProduct(Product p);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getAllProducts")]
+        List<Product> getAllProducts();
+
+
+
 
         //Parameter Table APIs
         [OperationContract]

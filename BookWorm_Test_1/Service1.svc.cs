@@ -18,46 +18,7 @@ namespace BookWorm_Test_1
     {
         Boolean IProductService.addProduct(Product p)
         {
-            //Console.WriteLine("Got Request");
-            //string conStr = ConfigurationManager.ConnectionStrings["bookwormDB"].ConnectionString;
-
-            int result = 0;
-
-            using (SqlConnection con = GetSqlConnection.getSqlConnection())
-            {
-                String insertStr = "insert into Products (type_id, language_id, category_id, title, price, selling_price, special_price, special_price_from_date, special_price_to_date, days_of_sale," +
-                "short_description, long_description, author, release_date, is_rentable, is_in_library, rent_amount, min_rent_days, publisher, [ image_path])" +
-                "values (@typeId, @langID, @catID, @title, @price, @sell, @splPrice, @fromDate, @toDate, @daysOfSale, @shortDesc, @longDesc, @author, @releaseDate, @isRentable, @isInLib, @rentAmount, @minRentDays, @publisher, @imagePath)";
-
-                SqlCommand cmd = new SqlCommand(insertStr, con);
-
-                cmd.Parameters.AddWithValue("@typeId", p.type_id);
-                cmd.Parameters.AddWithValue("@langID", p.language_id);
-                cmd.Parameters.AddWithValue("@catID", p.category_id);
-                cmd.Parameters.AddWithValue("@title", p.title);
-                cmd.Parameters.AddWithValue("@price", p.price);
-                cmd.Parameters.AddWithValue("@sell", p.sellingPrice);
-                cmd.Parameters.AddWithValue("@splPrice", p.specialPrice);
-                cmd.Parameters.AddWithValue("@fromDate", DateTime.Parse(p.saleFromDate));
-                cmd.Parameters.AddWithValue("@toDate", DateTime.Parse(p.saleToDate));
-                cmd.Parameters.AddWithValue("@daysOfSale", p.daysOfSale);
-                cmd.Parameters.AddWithValue("@shortDesc", p.shortDescription);
-                cmd.Parameters.AddWithValue("@longDesc", p.longDescription);
-                cmd.Parameters.AddWithValue("@author", p.authors);
-                cmd.Parameters.AddWithValue("@releaseDate", DateTime.Parse(p.releaseDate));
-                cmd.Parameters.AddWithValue("@isRentable", p.isRentable);
-                cmd.Parameters.AddWithValue("@isInLib", p.isInLibrary);
-                cmd.Parameters.AddWithValue("@rentAmount", p.rentAmount);
-                cmd.Parameters.AddWithValue("@minRentDays", p.minimumRentDays);
-                cmd.Parameters.AddWithValue("@publisher", p.publisher);
-                cmd.Parameters.AddWithValue("@imagePath", p.imagePath);
-
-                con.Open();
-
-                result = cmd.ExecuteNonQuery();
-            }
-
-            return result > 0 ? true : false;
+            return ProductTableServices.addProduct(p);
         }
 
 
@@ -124,6 +85,12 @@ namespace BookWorm_Test_1
         bool IProductService.authUser(User p)
         {
             return UserTableServices.authUser(p);
+        }
+
+
+        List<Product> IProductService.getAllProducts()
+        {
+            return ProductTableServices.getAllProducts();
         }
     }
 }

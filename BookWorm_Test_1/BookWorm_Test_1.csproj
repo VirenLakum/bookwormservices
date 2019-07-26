@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Table Services\ProductTableServices.cs" />
     <Compile Include="Table Services\TypeTableServices.cs" />
     <Compile Include="Table Services\UserTableServices.cs" />
   </ItemGroup>
