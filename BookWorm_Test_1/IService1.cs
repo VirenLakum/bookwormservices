@@ -23,8 +23,21 @@ namespace BookWorm_Test_1
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getAllProducts")]
         List<Product> getAllProducts();
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getProductsByCategory/{catId}")]
+        List<Product> getProductsByCategory(string catId);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getProductsByLanguage/{langId}")]
+        List<Product> getProductsByLanguage(string langId);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getProductsByType/{typeId}")]
+        List<Product> getProductsByType(string typeId);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getProductsById/{id}")]
+        Product getProductsById(string id);
 
         //Parameter Table APIs
         [OperationContract]

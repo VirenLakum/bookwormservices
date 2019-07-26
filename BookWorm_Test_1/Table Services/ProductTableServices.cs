@@ -97,5 +97,194 @@ namespace BookWorm_Test_1.Table_Services
 
             return allProducts;
         }
+
+        public static List<Product> getAllProductsByCategory(string category)
+        {
+            List<Product> allProducts = new List<Product>();
+
+            using (SqlConnection con = GetSqlConnection.getSqlConnection())
+            {
+                String insertStr = "select * from Products where category_id = @cat_id";
+
+                SqlCommand cmd = new SqlCommand(insertStr, con);
+
+                con.Open();
+
+                cmd.Parameters.AddWithValue("@cat_id", category);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Product p = new Product();
+                    p.id = Convert.ToInt32(reader["Id"]);
+                    p.type_id = Convert.ToInt32(reader["type_id"]);
+                    p.language_id = Convert.ToInt32(reader["language_id"]);
+                    p.category_id = Convert.ToInt32(reader["category_id"]);
+                    p.title = Convert.ToString(reader["title"]);
+                    p.price = Convert.ToDecimal(reader["price"]);
+                    p.sellingPrice = Convert.ToDecimal(reader["selling_price"]);
+                    p.specialPrice = Convert.ToDecimal(reader["special_price"]);
+                    p.saleFromDate = Convert.ToString(reader["special_price_from_date"]);
+                    p.saleToDate = Convert.ToString(reader["special_price_to_date"]);
+                    p.daysOfSale = Convert.ToInt32(reader["days_of_sale"]);
+                    p.shortDescription = Convert.ToString(reader["short_description"]);
+                    p.longDescription = Convert.ToString(reader["long_description"]);
+                    p.authors = Convert.ToString(reader["author"]);
+                    p.releaseDate = Convert.ToString(reader["release_date"]);
+                    p.isRentable = Convert.ToBoolean(reader["is_rentable"]);
+                    p.isInLibrary = Convert.ToBoolean(reader["is_in_library"]);
+                    p.rentAmount = Convert.ToDecimal(reader["rent_amount"]);
+                    p.minimumRentDays = Convert.ToInt32(reader["min_rent_days"]);
+                    p.publisher = Convert.ToString(reader["publisher"]);
+                    p.imagePath = Convert.ToString(reader[" image_path"]);
+
+                    allProducts.Add(p);
+                }
+            }
+
+            return allProducts;
+        }
+
+        public static List<Product> getAllProductsByLanguage(string lang_id)
+        {
+            List<Product> allProducts = new List<Product>();
+
+            using (SqlConnection con = GetSqlConnection.getSqlConnection())
+            {
+                String insertStr = "select * from Products where language_id = @lang_id";
+
+                SqlCommand cmd = new SqlCommand(insertStr, con);
+
+                con.Open();
+
+                cmd.Parameters.AddWithValue("@lang_id", lang_id);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Product p = new Product();
+                    p.id = Convert.ToInt32(reader["Id"]);
+                    p.type_id = Convert.ToInt32(reader["type_id"]);
+                    p.language_id = Convert.ToInt32(reader["language_id"]);
+                    p.category_id = Convert.ToInt32(reader["category_id"]);
+                    p.title = Convert.ToString(reader["title"]);
+                    p.price = Convert.ToDecimal(reader["price"]);
+                    p.sellingPrice = Convert.ToDecimal(reader["selling_price"]);
+                    p.specialPrice = Convert.ToDecimal(reader["special_price"]);
+                    p.saleFromDate = Convert.ToString(reader["special_price_from_date"]);
+                    p.saleToDate = Convert.ToString(reader["special_price_to_date"]);
+                    p.daysOfSale = Convert.ToInt32(reader["days_of_sale"]);
+                    p.shortDescription = Convert.ToString(reader["short_description"]);
+                    p.longDescription = Convert.ToString(reader["long_description"]);
+                    p.authors = Convert.ToString(reader["author"]);
+                    p.releaseDate = Convert.ToString(reader["release_date"]);
+                    p.isRentable = Convert.ToBoolean(reader["is_rentable"]);
+                    p.isInLibrary = Convert.ToBoolean(reader["is_in_library"]);
+                    p.rentAmount = Convert.ToDecimal(reader["rent_amount"]);
+                    p.minimumRentDays = Convert.ToInt32(reader["min_rent_days"]);
+                    p.publisher = Convert.ToString(reader["publisher"]);
+                    p.imagePath = Convert.ToString(reader[" image_path"]);
+
+                    allProducts.Add(p);
+                }
+            }
+
+            return allProducts;
+        }
+
+        public static Product getAllProductsById(string id)
+        {
+            Product p = new Product();
+
+            using (SqlConnection con = GetSqlConnection.getSqlConnection())
+            {
+                String insertStr = "select * from Products where Id = @id";
+
+                SqlCommand cmd = new SqlCommand(insertStr, con);
+
+                con.Open();
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    p.id = Convert.ToInt32(reader["Id"]);
+                    p.type_id = Convert.ToInt32(reader["type_id"]);
+                    p.language_id = Convert.ToInt32(reader["language_id"]);
+                    p.category_id = Convert.ToInt32(reader["category_id"]);
+                    p.title = Convert.ToString(reader["title"]);
+                    p.price = Convert.ToDecimal(reader["price"]);
+                    p.sellingPrice = Convert.ToDecimal(reader["selling_price"]);
+                    p.specialPrice = Convert.ToDecimal(reader["special_price"]);
+                    p.saleFromDate = Convert.ToString(reader["special_price_from_date"]);
+                    p.saleToDate = Convert.ToString(reader["special_price_to_date"]);
+                    p.daysOfSale = Convert.ToInt32(reader["days_of_sale"]);
+                    p.shortDescription = Convert.ToString(reader["short_description"]);
+                    p.longDescription = Convert.ToString(reader["long_description"]);
+                    p.authors = Convert.ToString(reader["author"]);
+                    p.releaseDate = Convert.ToString(reader["release_date"]);
+                    p.isRentable = Convert.ToBoolean(reader["is_rentable"]);
+                    p.isInLibrary = Convert.ToBoolean(reader["is_in_library"]);
+                    p.rentAmount = Convert.ToDecimal(reader["rent_amount"]);
+                    p.minimumRentDays = Convert.ToInt32(reader["min_rent_days"]);
+                    p.publisher = Convert.ToString(reader["publisher"]);
+                    p.imagePath = Convert.ToString(reader[" image_path"]);
+                }
+            }
+
+            return p;
+        }
+
+        public static List<Product> getAllProductsByType(string typeId)
+        {
+            List<Product> allProducts = new List<Product>();
+
+            using (SqlConnection con = GetSqlConnection.getSqlConnection())
+            {
+                String insertStr = "select * from Products where type_id = @id";
+
+                SqlCommand cmd = new SqlCommand(insertStr, con);
+
+                con.Open();
+
+                cmd.Parameters.AddWithValue("@id", typeId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Product p = new Product();
+                    p.id = Convert.ToInt32(reader["Id"]);
+                    p.type_id = Convert.ToInt32(reader["type_id"]);
+                    p.language_id = Convert.ToInt32(reader["language_id"]);
+                    p.category_id = Convert.ToInt32(reader["category_id"]);
+                    p.title = Convert.ToString(reader["title"]);
+                    p.price = Convert.ToDecimal(reader["price"]);
+                    p.sellingPrice = Convert.ToDecimal(reader["selling_price"]);
+                    p.specialPrice = Convert.ToDecimal(reader["special_price"]);
+                    p.saleFromDate = Convert.ToString(reader["special_price_from_date"]);
+                    p.saleToDate = Convert.ToString(reader["special_price_to_date"]);
+                    p.daysOfSale = Convert.ToInt32(reader["days_of_sale"]);
+                    p.shortDescription = Convert.ToString(reader["short_description"]);
+                    p.longDescription = Convert.ToString(reader["long_description"]);
+                    p.authors = Convert.ToString(reader["author"]);
+                    p.releaseDate = Convert.ToString(reader["release_date"]);
+                    p.isRentable = Convert.ToBoolean(reader["is_rentable"]);
+                    p.isInLibrary = Convert.ToBoolean(reader["is_in_library"]);
+                    p.rentAmount = Convert.ToDecimal(reader["rent_amount"]);
+                    p.minimumRentDays = Convert.ToInt32(reader["min_rent_days"]);
+                    p.publisher = Convert.ToString(reader["publisher"]);
+                    p.imagePath = Convert.ToString(reader[" image_path"]);
+
+                    allProducts.Add(p);
+                }
+            }
+
+            return allProducts;
+        }
     }
 }

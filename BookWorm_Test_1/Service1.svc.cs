@@ -92,5 +92,27 @@ namespace BookWorm_Test_1
         {
             return ProductTableServices.getAllProducts();
         }
+
+
+        List<Product> IProductService.getProductsByCategory(string catId)
+        {
+            return ProductTableServices.getAllProductsByCategory(catId);
+        }
+
+
+        List<Product> IProductService.getProductsByLanguage(string langId)
+        {
+            return ProductTableServices.getAllProductsByLanguage(langId);
+        }
+
+        List<Product> IProductService.getProductsByType(string typeId)
+        {
+            return ProductTableServices.getAllProductsByType(typeId);
+        }
+
+        Product IProductService.getProductsById(string id)
+        {
+            return ProductTableServices.getAllProductsById(id);
+        }
     }
 }
