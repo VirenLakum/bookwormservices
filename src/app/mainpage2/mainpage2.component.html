@@ -1,0 +1,93 @@
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-md-2 bg-primary ml-5">
+                        <div class="list-group">
+                                <a href="#" class="list-group-item active">New Release</a>
+                                <a href="#" class="list-group-item">Trending</a>
+                                <a href="#" class="list-group-item">Recommended</a>
+                                <a href="#" class="list-group-item">BookWorm Best Read</a>
+                                <a href="#" class="list-group-item">Popular Series</a>
+                                <a href="#" class="list-group-item">Award Winner</a>
+
+                                <a href="#" class="list-group-item">Special Offer</a>
+                                <a href="#" class="list-group-item">Adventure</a>
+                                <a href="#" class="list-group-item">Exam Preparation</a>
+                                <a href="#" class="list-group-item">Horror</a>
+                                <a href="#" class="list-group-item">History</a>
+                                <a href="#" class="list-group-item">Law</a>
+                        </div>
+                </div>
+
+                <div class="col-md-9 ml-5 bg-success">
+                        <div class="bg-primary" *ngFor="let product of allProducts; let i = index;">
+                                
+                                <div *ngIf="i%3 == 2">new row</div>
+                        </div>
+                        <!-- <table>
+                                <tr>
+                                        <th class="col-md-3"></th>
+                                        <th class="col-md-3"></th>
+                                        <th class="col-md-3"></th>
+                                </tr>
+                                <tr *ngFor="let product of allProducts">
+                                        <td>
+                                                        <div>
+
+                                                                        <div class="card" style="width:200px">
+                                                                                <img class="card-img-top m-auto"
+                                                                                        src="assets/audiobook1.png"
+                                                                                        alt="Card image" style="width:50%">
+                                                                                <div class="card-body">
+                                                                                        <h6>{{product.title}}</h6>
+                                                                                        <h6 style="color: darkcyan">Price : $60
+                                                                                        </h6>
+                                                                                        <button type="button" a href="#"
+                                                                                                class="btn btn-secondary  btn-sm"
+                                                                                                style="margin-right: 10%">Add to
+                                                                                                Cart</button>
+                                                                                        <button type="button" a href="#"
+                                                                                                class="btn btn-success  btn-sm">Rent</button>
+                                                                                </div>
+        
+                                                                        </div>
+        
+                                                                </div>
+                                        </td>
+                                                
+                                </tr>
+                        </table> -->
+                </div>
+
+                <!-- <div class="col-md-9 lg-9">
+                                <div class="row">
+                        <div *ngFor="let product of allProducts; let i=index;">
+                                
+                                        <div class="col-md-3 lg-9">
+
+                                                        <div class="card" style="width:200px">
+                                                                <img class="card-img-top m-auto"
+                                                                        src="assets/audiobook1.png"
+                                                                        alt="Card image" style="width:50%">
+                                                                <div class="card-body">
+                                                                        <h6>{{product.title}}</h6>
+                                                                        <h6 style="color: darkcyan">Price : $60
+                                                                        </h6>
+                                                                        <button type="button" a href="#"
+                                                                                class="btn btn-secondary  btn-sm"
+                                                                                style="margin-right: 10%">Add to
+                                                                                Cart</button>
+                                                                        <button type="button" a href="#"
+                                                                                class="btn btn-success  btn-sm">Rent</button>
+                                                                </div>
+
+                                                        </div>
+
+                                                </div>
+                                                <div *ngIf="i % 3 == 2"><br/></div>  
+                        </div>
+                </div>
+                </div> -->
+
+
+        </div>
+</div>
