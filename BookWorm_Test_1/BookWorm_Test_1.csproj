@@ -69,10 +69,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pocos\Cart.cs" />
     <Compile Include="Pocos\Category.cs" />
     <Compile Include="Pocos\Language.cs" />
     <Compile Include="Pocos\Type.cs" />
     <Compile Include="Pocos\User.cs" />
+    <Compile Include="Table Services\CartTableServices.cs" />
     <Compile Include="Table Services\CategoryTableServices.cs" />
     <Compile Include="Table Services\GetSqlConnection.cs" />
     <Compile Include="Pocos\Parameter.cs" />

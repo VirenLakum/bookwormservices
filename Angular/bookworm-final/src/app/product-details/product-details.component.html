@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card" style="width:350px">
+               <img class="card-img-top"  src="{{product.imagePath}}" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif" >{{product.title}}</h4>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-7">
+        <div class="container">
+             <div  class="card img-fluid" style="width:500px">
+               <div class="card-img-overlay">
+                 <h5 class="card-title">{{product.shortDescription}}</h5>
+                 <p class="card-text">{{product.longDescription}}</p>
+
+
+                    <h5 style="color: darkcyan">Price : ₹{{product.price}}</h5>
+                    <button type="button" class="btn btn-success" (click)="addToCart()">Add To Cart</button>
+               </div>
+             </div>
+           </div>
+        </div>
+    </div>
+  </div>
+
+  <br>
+
+  <h5 style="text-align: center">Related Books</h5>
+
+  <br>
+
+  <div class="row mx-md-n5">
+
+  <div class="col px-md-5"><div class="p-3 border bg-light">
+
+  <app-related-products></app-related-products>
+
+  </div>
+  </div>
+
+  </div>

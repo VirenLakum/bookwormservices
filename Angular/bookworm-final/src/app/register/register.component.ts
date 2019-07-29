@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormBuilder } from "@angular/forms";
 import {NgbDateStruct, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { UserServicesService } from '../../services/user-services.service';
 import { User } from '../../poco classes/user';
@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  // key that is used to access the data in local storageconst 
+  STORAGE_KEY_USER = 'user';
+
   public maxDate: NgbDateStruct  = void 0;
 
   private isSubmitted:boolean = false;
@@ -21,23 +24,24 @@ export class RegisterComponent implements OnInit {
 
   private user : User =  new User();
 
-  registrationForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    mobile: new FormControl('', Validators.required),
-    dob: new FormControl('', Validators.required),
-    landmark : new FormControl('', Validators.required),
-    city : new FormControl('', Validators.required),
-    street : new FormControl('', Validators.required),
-    pincode : new FormControl('', Validators.required) 
-  });
-
   constructor(private calendar: NgbCalendar, private userServices:UserServicesService, 
-    private dateFormatter:NgbDateParserFormatter, private router:Router) { 
+    private dateFormatter:NgbDateParserFormatter, private router:Router, private formBuilder: FormBuilder) { 
     this.maxDate = this.calendar.getToday();
     console.log( "Date is " + this.maxDate)
   }
+
+  registrationForm = this.formBuilder.group({
+    name: this.formBuilder.control('', [Validators.required,Validators.minLength(3)]),
+    email: this.formBuilder.control('', [Validators.required,Validators.email]),
+    password: this.formBuilder.control('', [Validators.required,Validators.minLength(8)]),
+    mobile: this.formBuilder.control('', [Validators.required,Validators.minLength(10)]),
+    dob: this.formBuilder.control('', Validators.required),
+    landmark : this.formBuilder.control('', Validators.required),
+    city : this.formBuilder.control('', Validators.required),
+    street : this.formBuilder.control('', Validators.required),
+    pincode : this.formBuilder.control('', [Validators.required,Validators.minLength(6)]) 
+  });
+
 
   ngOnInit() {
 
@@ -48,8 +52,9 @@ export class RegisterComponent implements OnInit {
     console.log("button clicked");
     this.isSubmitted = true;
 
-    if (receivedForm.valid)
+    if (!receivedForm.valid)
     {
+      console.log("validation failed")
       return;
     }
     this.bindInputs(receivedForm);
@@ -80,6 +85,8 @@ export class RegisterComponent implements OnInit {
       if (data.toString() === "true")
       {
         console.log('redirecting');
+        // insert updated array to local storage
+        localStorage.setItem(this.STORAGE_KEY_USER, JSON.stringify(this.user));
         this.router.navigateByUrl('');
       }
       else

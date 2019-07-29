@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4" style="text-align: center">Shopping Cart</h1>
+    <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <!-- <div class="col-sm-1">
+        
+      </div> -->
+
+
+    <div class="col-sm-7">
+
+
+
+      <table class="table">
+        <caption></caption>
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products">
+            <th scope="row"><img src="{{p.imagePath}}" height="100" width="100"></th>
+            <td>₹{{p.price}}</td>
+
+            <td>
+              <button (click)="removeItem(p)" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-trash"></span> Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+
+    <div class="col-sm-1">
+
+    </div>
+
+
+    <div class="col-sm-4">
+
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Subtotal</h5>
+          <h5>Total(Items) : ₹{{checkoutPrice}}</h5>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">This order contains a gift</label>
+          </div>
+
+
+          <button type="button" class="btn btn-success">checkout</button>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>

@@ -8,5 +8,5 @@ export class User {
     city: string;
     landmark: string;
     pincode: string;
-    dob: string;    
+    dob: string;
 }

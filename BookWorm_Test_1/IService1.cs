@@ -93,5 +93,19 @@ namespace BookWorm_Test_1
                     ResponseFormat = WebMessageFormat.Json,
                     UriTemplate = "/authUser")]
         bool authUser(User p);
+
+        //Cart Table Servies
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getCartDetailsFor/{id}")]
+        List<Cart> getCartDetails(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/addToCart/{userId}/{productId}")]
+        bool addToCart(string userId, string productId);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/removeFromCart/{userId}/{productId}")]
+        bool removeFromCart(string userId, string productId);
+
     }
 }

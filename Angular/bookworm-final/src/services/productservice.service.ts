@@ -9,6 +9,7 @@ import {Product } from '../poco classes/product';
 export class ProductserviceService {
   private baseUrl3='http://localhost:4200';
   private getproducts='http://localhost:55652/Service1.svc/getAllProducts';
+  private getProdById = 'http://localhost:55652/Service1.svc/getProductsById/';
 
   constructor(private http:HttpClient) { }
 
@@ -21,5 +22,10 @@ export class ProductserviceService {
   {
     console.log("in service");
     return this.http.get<Product[]>(this.getproducts);
+  }
+
+  getProductById(id):Observable<Product>
+  {
+    return this.http.get<Product>(this.getProdById + id);
   }
 }

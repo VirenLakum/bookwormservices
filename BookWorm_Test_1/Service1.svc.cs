@@ -114,5 +114,23 @@ namespace BookWorm_Test_1
         {
             return ProductTableServices.getAllProductsById(id);
         }
+
+
+        List<Cart> IProductService.getCartDetails(string id)
+        {
+            return CartTableServices.getCartDetail(id);
+        }
+
+
+        bool IProductService.addToCart(string userId, string productId)
+        {
+            return CartTableServices.addToCart(userId, productId);
+        }
+
+
+        bool IProductService.removeFromCart(string userId, string productId)
+        {
+            return CartTableServices.removeFromCart(userId, productId);
+        }
     }
 }

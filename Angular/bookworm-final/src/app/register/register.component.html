@@ -1,91 +1,122 @@
+<app-header></app-header>
 <div style="margin: 50px; background-color: rgba(199, 206, 206, 0.63); padding: 50px; border-radius: 15px;">
-  <h1 style="text-align: center">Registration Form</h1><br>
+    <h1 style="text-align: center">Registration Form</h1><br>
+    
+    <div class="container-fluid">
+      <form [formGroup]="registrationForm" (ngSubmit)="signup(registrationForm)">
   
-  <!-- <ngb-alert *ngIf="giveAlert" (close)="giveAlert = false">Registration Failed</ngb-alert> -->
-
-  <div class="container-fluid">
-    <form [formGroup]="registrationForm" (ngSubmit)="signup(registrationForm)" novalidate>
-
-      <!-- First Row -->
-      <div class="form-row">
-        <div class="col-md-6">
-          <div class="form-group col-md-10 ml-4">
-            <label for="name">Name</label>
-            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Full Name" #name>
-            <div *ngIf="name.invalid && (name.touched || isSubmitted)">
-              <label *ngIf="name.errors.required">Enter Name</label>
+        <!-- First Row -->
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="form-group col-md-10 ml-4">
+              <label for="name">Name</label>
+              <input [class.is-invalid]="registrationForm.get('name').invalid && registrationForm.get('name').touched" required formControlName="name" type="text" class="form-control" id="name" placeholder="Full Name" #name>
+              <!-- <div *ngIf="name.invalid && (name.touched || isSubmitted)"> -->
+                <!-- <label *ngIf="name.errors.required">Enter Name</label> -->
+              <!-- </div>  -->
+             
+              <!-- <small [class.d-none]="registrationForm.get('name').valid || registrationForm.get('name').untouched" class="text-danger">Username is required</small> -->
+              <div *ngIf="registrationForm.get('name').invalid && (registrationForm.get('name').touched || isSubmitted)">
+              <small *ngIf="registrationForm.get('name').errors?.required" class="text-danger">Username is required</small>
+              <small *ngIf="registrationForm.get('name').errors?.minlength" class="text-danger">username must be 3 characters</small>
+            </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group col-md-10 ml-4">
+                <label for="email">Email</label>
+                <input  [class.is-invalid]="registrationForm.get('email').invalid && registrationForm.get('email').touched" required formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+                <div *ngIf="registrationForm.get('email').invalid && (registrationForm.get('email').touched || isSubmitted)">
+                  <small *ngIf="registrationForm.get('email').errors?.required" class="text-danger">Email is required</small>
+                  <small *ngIf="registrationForm.get('email').errors?.email" class="text-danger">Email is invalid</small>
+  
+                </div>
+              </div>
+          </div>
+         </div>
+  
+        <!-- Second Row -->
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <div class="col-md-10 ml-4">
+              <label for="password">Password</label>
+              <input  [class.is-invalid]="registrationForm.get('password').invalid && registrationForm.get('password').touched" required formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+              <div *ngIf="registrationForm.get('password').invalid && (registrationForm.get('password').touched || isSubmitted)">
+                <small *ngIf="registrationForm.get('password').errors?.required" class="text-danger">Password is required</small>
+                <small *ngIf="registrationForm.get('password').errors?.minlength" class="text-danger">8 characters are must</small>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group col-md-10 ml-4">
-              <label for="email">Email</label>
-              <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+          <div class="col-md-6">
+              <div class="form-group col-md-10 ml-4">
+                <label for="mobile">Mobile</label>
+                <input [class.is-invalid]="registrationForm.get('mobile').invalid && registrationForm.get('mobile').touched" required formControlName="mobile" type="text" class="form-control" id="mobile" placeholder="Mobile Number">
+                <div *ngIf="registrationForm.get('mobile').invalid && (registrationForm.get('mobile').touched || isSubmitted)">
+                  <small *ngIf="registrationForm.get('mobile').errors?.required" class="text-danger">MobileNo is required</small>
+                  <small *ngIf="registrationForm.get('mobile').errors?.minlength" class="text-danger">10 digits are must</small>
+                </div>
+              </div>
             </div>
         </div>
-      </div>
-
-      <!-- Second Row -->
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <div class="col-md-10 ml-4">
-            <label for="password">Password</label>
-            <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+  
+        <!-- Third Row -->
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <div class="form-group col-md-10 ml-4">
+                <label for="landmark">Landmark</label>
+                <textarea [class.is-invalid]="registrationForm.get('landmark').invalid && registrationForm.get('landmark').touched" formControlName="landmark" type="text" rows="2" class="form-control" id="landmark" placeholder="Landmark"></textarea>
+                <small [class.d-none]="registrationForm.get('landmark').valid || registrationForm.get('landmark').untouched" class="text-danger">Landmark is required</small> 
+              </div>
           </div>
-        </div>
-        <div class="col-md-6">
+  
+          <div class="form-group col-md-6">
             <div class="form-group col-md-10 ml-4">
-              <label for="mobile">Mobile</label>
-              <input formControlName="mobile" type="text" class="form-control" id="mobile" placeholder="Mobile Number">
-            </div>
-          </div>
-      </div>
-
-      <!-- Third Row -->
-      <div class="form-row">
-        <div class="form-group col-md-6">
-            <div class="form-group col-md-10 ml-4">
-              <label for="landmark">Landmark</label>
-              <textarea formControlName="landmark" type="text" rows="2" class="form-control" id="landmark" placeholder="Landmark"></textarea>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-          <div class="form-group col-md-10 ml-4">
-              <label for="dob">Date Of Birth</label>
-            <div class="input-group">
-              <input formControlName="dob" id="dob" class="form-control" placeholder="yyyy-mm-dd"
-                      name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" 
-                      [maxDate]="maxDate">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                <label for="dob">Date Of Birth</label>
+              <div class="input-group">
+                <input [class.is-invalid]="registrationForm.get('dob').invalid && registrationForm.get('dob').touched" formControlName="dob" id="dob" class="form-control" placeholder="yyyy-mm-dd"
+                        name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" 
+                        [maxDate]="maxDate">
+                        
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                 
+                </div>
+                <small [class.d-none]="registrationForm.get('dob').valid || registrationForm.get('dob').untouched" class="text-danger">Date is required</small> 
               </div>
             </div>
           </div>
         </div>
-      </div>
-      
-
-      <!-- Fourth Row -->
-      <div class="form-row col-md-12">
-          <div class="form-group col-md-5 ml-4">
-            <label for="street">Street</label>
-            <input formControlName="street" type="text" class="form-control" id="street" placeholder="Street">
-          </div>
-          <div class="form-group col-md-3"  style ="margin-left: 5px;">
-            <label for="city">City</label>
-            <input formControlName="city" type="text" class="form-control" id="city" placeholder="City">
-          </div>
-          <div class="form-group col-md-3" style ="margin-left: 5px;">
-            <label for="pincode">Pin Code</label>
-            <input formControlName="pincode" type="text" class="form-control" id="pincode" placeholder="Pin Code">
-          </div>
-      </div>
-
-      <!-- Fifth Row -->
-      <div style="margin-left: 500px;">
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-       </div>
-    </form>
+        
+  
+        <!-- Fourth Row -->
+        <div class="form-row col-md-12">
+            <div class="form-group col-md-5 ml-4">
+              <label for="street">Street</label>
+              <input  [class.is-invalid]="registrationForm.get('street').invalid && registrationForm.get('street').touched" formControlName="street" type="text" class="form-control" id="street" placeholder="Street">
+              <small [class.d-none]="registrationForm.get('street').valid || registrationForm.get('street').untouched" class="text-danger">Street is required</small>
+            </div>
+  
+            <div class="form-group col-md-3"  style ="margin-left: 5px;">
+              <label for="city">City</label>
+              <input  [class.is-invalid]="registrationForm.get('city').invalid && registrationForm.get('city').touched" formControlName="city" type="text" class="form-control" id="city" placeholder="City">
+              <small [class.d-none]="registrationForm.get('city').valid || registrationForm.get('city').untouched" class="text-danger">City is required</small>
+            </div>
+  
+            <div class="form-group col-md-3" style ="margin-left: 5px;">
+              <label for="pincode">Pin Code</label>
+              <input [class.is-invalid]="registrationForm.get('pincode').invalid && registrationForm.get('pincode').touched" formControlName="pincode" type="text" class="form-control" id="pincode" placeholder="Pin Code">
+              <div *ngIf="registrationForm.get('pincode').invalid && (registrationForm.get('pincode').touched || isSubmitted)">
+                <small *ngIf="registrationForm.get('pincode').errors?.required" class="text-danger">Pincode is required</small>
+                <small *ngIf="registrationForm.get('pincode').errors?.minlength" class="text-danger">Pincode must be 6 digits</small>
+              </div>
+            </div>
+        </div>
+  
+        <!-- Fifth Row -->
+        <div style="margin-left: 500px;">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+         </div>
+      </form>
+    </div>
   </div>
-</div>
-
+  
