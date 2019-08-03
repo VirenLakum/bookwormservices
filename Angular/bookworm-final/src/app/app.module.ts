@@ -20,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RelatedProductsComponent } from './related-products/related-products.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RelatedProductsComponent } from './related-products/related-products.co
     HomepageComponent,
     CartComponent,
     ProductDetailsComponent,
-    RelatedProductsComponent
+    RelatedProductsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

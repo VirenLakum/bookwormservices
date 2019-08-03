@@ -20,11 +20,24 @@ export class Mainpage2Component implements OnInit {
   currentUser : User;
   cartCount = 0;
 
+  username:string = 'Login';
+  isUserLoggedIn:boolean = false;
+
   constructor(private productService : ProductserviceService, private cartService: CartService,
   private  router:Router) { }
 
   ngOnInit() {
     this.loadAllProducts();
+    this.username = JSON.parse(localStorage.getItem('user')).name;
+    console.log("User name is ", this.username);
+    if (this.username == "")
+    {
+      this.username = "Login";
+    }
+    else
+    {
+      this.isUserLoggedIn = true;
+    }
   }
 
   loadAllProducts()

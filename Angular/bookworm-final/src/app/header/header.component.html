@@ -25,7 +25,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-          Dropdown
+          
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
@@ -88,12 +88,13 @@
         </div>
       </ng-template>
       
-      <button class="btn btn-info btn-sm ml-3" (click)="open(content)">Login</button> 
+      <button class="btn btn-info btn-sm ml-3" (click)="open(content)">{{username}}</button> 
 
+      <span *ngIf="isUserLoggedIn">
       <button type="button" class="btn btn-dark btn-sm ml-3" [routerLink]="['/cart']" routerLinkActive="router-link-active" >
           cart <span class="badge badge-light">{{cartCount}}</span>
         </button>
-      
+      </span>
       <hr>
       
       <pre>{{closeResult}}</pre>
@@ -102,8 +103,12 @@
 
 
 
-
-    <button type="button" class="btn btn-danger btn-sm ml-2" [routerLink]="['/register']" routerLinkActive="router-link-active" >Register</button>
+    <span *ngIf="!isUserLoggedIn">
+      <button type="button" class="btn btn-danger btn-sm ml-2" [routerLink]="['/register']" routerLinkActive="router-link-active" >Register</button>
+    </span>
+    <span *ngIf="isUserLoggedIn">
+      <button type="button" (click)="logout()" class="btn btn-danger btn-sm ml-2">Logout</button>
+    </span>
     </form>
   </div>
 </nav>

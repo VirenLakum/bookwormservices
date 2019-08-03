@@ -20,20 +20,23 @@
 
                 <div class="col-md-9 ml-5">
                         <div class="card-columns">
-                                <div class="card center shadow p-4 mb-4 bg-white" style="width:300px" *ngFor="let p of allProducts" [routerLink]="['productDetails', p.id]"
-                                routerLinkActive="router-link-active">
+                                <div class="card center shadow p-4 mb-4 bg-white" style="width:300px" *ngFor="let p of allProducts">
                                         <img class="card-img-top ml-5" src={{p.imagePath}} style="width:50%; margin-left: auto;
                                         margin-right: auto;"
-                                                alt="Card image cap">
+                                                alt="Card image cap"
+                                                [routerLink]="['productDetails', p.id]"
+                                                routerLinkActive="router-link-active">
                                         <div class="card-body">
                                                 <h5 class="card-title">{{p.title}}</h5>
                                                 <!-- <p class="card-text">{{p.shortDescription}}</p> -->
                                                 <h6 style="color: darkcyan">Price : ₹{{p.price}}</h6>
+                                                <span *ngIf="isUserLoggedIn">
                                                 <button type="button" (click)="addToCart(p)" class="btn btn-success  btn-sm"
                                                         style="margin-right: 10%">Add to
                                                         Cart</button>
                                                 <button type="button" a href="#"
                                                         class="btn btn-success  btn-sm">Rent</button>
+                                                </span>
                                         </div>
                                 </div>
 

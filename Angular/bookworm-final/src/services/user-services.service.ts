@@ -10,7 +10,7 @@ import { User } from "../poco classes/user";
 })
 export class UserServicesService {
 
-  private addUserUrl='http://localhost:55652/Service1.svc/addUser';
+  private addUserUrl='http://localhost:8080/Bookworm/addUser';
 
   constructor(private http:HttpClient) { }
 

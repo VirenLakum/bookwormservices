@@ -12,13 +12,26 @@ export class HeaderComponent implements OnInit {
   closeResult: string;
   constructor(private modalService: NgbModal, private cartService:CartService) { }
 
-  username:string = '';
+  username:string = 'Login';
   password:string = '';
   private cartCount;
   cart: Cart[];
+  isUserLoggedIn:boolean = false;
+
 
   ngOnInit() {
     this.reloadCart();
+    this.username = JSON.parse(localStorage.getItem('user')).name;
+    console.log("User name is ", this.username);
+    if (this.username == "")
+    {
+      this.username = "Login";
+    }
+    else
+    {
+      this.isUserLoggedIn = true;
+    }
+    
   }
 
   open(content) {
@@ -50,4 +63,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  logout()
+  {
+    localStorage.removeItem("user");
+    window.location.reload();
+  }
 }

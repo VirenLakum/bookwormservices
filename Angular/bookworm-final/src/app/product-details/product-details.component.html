@@ -2,20 +2,21 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-4">
-        <div class="card" style="width:350px">
-               <img class="card-img-top"  src="{{product.imagePath}}" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif" >{{product.title}}</h4>
-            </div>
+        <div class="card shadow p-4 mb-4 bg-white" style="width:350px">
+              
+            <!-- <div class="card-body">
+              <!-- <h3 class="card-title text-dark m-auto" style="font-family: 'Times New Roman', Times, serif" >{{product.title}}</h3>
+            </div> -->
+            <img class="card-img-bottom"  src="{{product.imagePath}}" alt="Card image">
           </div>
       </div>
       <div class="col-sm-1">
       </div>
-      <div class="col-sm-7">
-        <div class="container">
+      <div class="col-sm-7 shadow p-4 mb-4 bg-white">
+        <div class="container ">
              <div  class="card img-fluid" style="width:500px">
                <div class="card-img-overlay">
-                 <h5 class="card-title">{{product.shortDescription}}</h5>
+                 <h5 class="card-title text-dark">{{product.shortDescription}}</h5>
                  <p class="card-text">{{product.longDescription}}</p>
 
 
@@ -30,7 +31,7 @@
 
   <br>
 
-  <h5 style="text-align: center">Related Books</h5>
+  <h5 style="text-align: center">Recommended Books</h5>
 
   <br>
 

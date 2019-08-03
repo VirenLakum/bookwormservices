@@ -23,6 +23,7 @@ export class CartService {
 
   removeFromCart(userId, prodId)
   {
+    //debugger;
     return this.http.get<string>(this.removeItem + userId + '/' + prodId);
   }
 
