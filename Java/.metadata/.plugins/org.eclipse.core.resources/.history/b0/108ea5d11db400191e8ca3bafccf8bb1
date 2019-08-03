@@ -1,0 +1,11 @@
+package mypack;
+
+public class UserDAOImpl implements UserDAO {
+
+	@Override
+	public boolean addUser(User u) {
+		
+		return false;
+	}
+
+}

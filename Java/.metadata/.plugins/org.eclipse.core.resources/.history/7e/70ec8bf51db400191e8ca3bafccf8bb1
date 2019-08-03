@@ -1,0 +1,19 @@
+package mypack;
+
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+@Component
+@Transactional
+public class UserDAOImpl implements UserDAO {
+
+	HibernateTemplate hibernateTemplate;
+	
+	@Override
+	public boolean addUser(User u) {
+		
+		return false;
+	}
+
+}

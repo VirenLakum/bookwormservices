@@ -1,0 +1,8 @@
+package mypack;
+
+public interface UserDAO {
+
+	boolean addUser(User u);
+	
+	List<User> getAllUsers();
+}
